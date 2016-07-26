@@ -1,0 +1,1741 @@
++ RELEASE_VERSION=1.18.1.3
++ SKAWARE_VERSION=1.18.1
++ OVERLAY_SRC_PATH=/s6/overlay-builder/overlay-rootfs
++ OVERLAY_DST_PATH=/s6/overlay-builder/overlay-rootfs
++ targets=('i486' 'amd64' 'armhf')
++ outputs=('portable')
++ editions=('' 'nobin')
++ for edition in '"${editions[@]}"'
++ for target in '"${targets[@]}"'
++ '[' '' == nobin ']'
++ overlaydstpath=/s6/overlay-builder/overlay-rootfs-raw
++ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-i486.tar.gz
++ rm -rf /s6/overlay-builder/overlay-rootfs-raw
++ rm -f /s6/dist/s6-overlay-1.18.1.3-i486.tar.gz
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw
++ mkdir -p /s6/dist
++ cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-raw/
++ '[' '' '!=' nobin ']'
++ packages=($(get_packages_with_versions_from_manifest "manifest-portable.txt"))
+++ get_packages_with_versions_from_manifest manifest-portable.txt
+++ manifest=manifest-portable.txt
+++ versions=()
+++ read -r line
++++ echo skalibs=2.3.10.0
++++ cut -d= -f1
+++ key=skalibs
++++ echo skalibs=2.3.10.0
++++ cut -d= -f2
+++ value=2.3.10.0
+++ [[ ! -z skalibs ]]
+++ [[ ! -z 2.3.10.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo execline=2.1.5.0
++++ cut -d= -f1
+++ key=execline
++++ echo execline=2.1.5.0
++++ cut -d= -f2
+++ value=2.1.5.0
+++ [[ ! -z execline ]]
+++ [[ ! -z 2.1.5.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6=2.3.0.0
++++ cut -d= -f1
+++ key=s6
++++ echo s6=2.3.0.0
++++ cut -d= -f2
+++ value=2.3.0.0
+++ [[ ! -z s6 ]]
+++ [[ ! -z 2.3.0.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6-portable-utils=2.0.6.0
++++ cut -d= -f1
+++ key=s6-portable-utils
++++ echo s6-portable-utils=2.0.6.0
++++ cut -d= -f2
+++ value=2.0.6.0
+++ [[ ! -z s6-portable-utils ]]
+++ [[ ! -z 2.0.6.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6-rc=0.0.3.0
++++ cut -d= -f1
+++ key=s6-rc
++++ echo s6-rc=0.0.3.0
++++ cut -d= -f2
+++ value=0.0.3.0
+++ [[ ! -z s6-rc ]]
+++ [[ ! -z 0.0.3.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo ''
++++ cut -d= -f1
+++ key=
++++ echo ''
++++ cut -d= -f2
+++ value=
+++ [[ ! -z '' ]]
+++ read -r line
+++ echo skalibs-2.3.10.0 execline-2.1.5.0 s6-2.3.0.0 s6-portable-utils-2.0.6.0 s6-rc-0.0.3.0
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/skalibs-2.3.10.0-linux-i486-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/execline-2.1.5.0-linux-i486-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./bin/
+./bin/background
+./bin/backtick
+./bin/cd
+./bin/define
+./bin/dollarat
+./bin/elgetopt
+./bin/elgetpositionals
+./bin/elglob
+./bin/emptyenv
+./bin/exec
+./bin/execlineb
+./bin/exit
+./bin/export
+./bin/fdblock
+./bin/fdclose
+./bin/fdmove
+./bin/fdswap
+./bin/fdreserve
+./bin/forbacktickx
+./bin/foreground
+./bin/forstdin
+./bin/forx
+./bin/getcwd
+./bin/getpid
+./bin/heredoc
+./bin/homeof
+./bin/if
+./bin/ifelse
+./bin/ifte
+./bin/ifthenelse
+./bin/import
+./bin/importas
+./bin/loopwhilex
+./bin/multidefine
+./bin/multisubstitute
+./bin/pipeline
+./bin/piperw
+./bin/redirfd
+./bin/runblock
+./bin/shift
+./bin/trap
+./bin/tryexec
+./bin/umask
+./bin/unexport
+./bin/wait
+./bin/withstdinas
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-2.3.0.0-linux-i486-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./libexec/
+./libexec/s6lockd-helper
+./bin/
+./bin/ucspilogd
+./bin/s6-ftrigrd
+./bin/s6-ftrig-listen1
+./bin/s6-ftrig-listen
+./bin/s6-ftrig-notify
+./bin/s6-ftrig-wait
+./bin/s6lockd
+./bin/s6-cleanfifodir
+./bin/s6-mkfifodir
+./bin/s6-svscan
+./bin/s6-supervise
+./bin/s6-svc
+./bin/s6-svscanctl
+./bin/s6-svok
+./bin/s6-svstat
+./bin/s6-svwait
+./bin/s6-svlisten1
+./bin/s6-svlisten
+./bin/s6-envdir
+./bin/s6-envuidgid
+./bin/s6-fghack
+./bin/s6-log
+./bin/s6-setlock
+./bin/s6-setsid
+./bin/s6-softlimit
+./bin/s6-tai64n
+./bin/s6-tai64nlocal
+./bin/s6-accessrules-cdb-from-fs
+./bin/s6-accessrules-fs-from-cdb
+./bin/s6-connlimit
+./bin/s6-ioconnect
+./bin/s6-ipcclient
+./bin/s6-ipcserver-access
+./bin/s6-ipcserver-socketbinder
+./bin/s6-ipcserver
+./bin/s6-ipcserverd
+./bin/s6-sudo
+./bin/s6-sudoc
+./bin/s6-sudod
+./bin/s6-fdholder-daemon
+./bin/s6-fdholderd
+./bin/s6-fdholder-delete
+./bin/s6-fdholder-deletec
+./bin/s6-fdholder-store
+./bin/s6-fdholder-storec
+./bin/s6-fdholder-retrieve
+./bin/s6-fdholder-retrievec
+./bin/s6-fdholder-list
+./bin/s6-fdholder-listc
+./bin/s6-fdholder-getdump
+./bin/s6-fdholder-getdumpc
+./bin/s6-fdholder-setdump
+./bin/s6-fdholder-setdumpc
+./bin/s6-fdholder-transferdump
+./bin/s6-fdholder-transferdumpc
+./sbin/
+./sbin/s6-applyuidgid
+./sbin/s6-setuidgid
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-portable-utils-2.0.6.0-linux-i486-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./bin/
+./bin/s6-basename
+./bin/s6-cat
+./bin/s6-chmod
+./bin/s6-chown
+./bin/s6-clock
+./bin/s6-cut
+./bin/s6-dirname
+./bin/s6-dumpenv
+./bin/s6-echo
+./bin/s6-env
+./bin/s6-expr
+./bin/s6-false
+./bin/s6-format-filter
+./bin/s6-grep
+./bin/s6-head
+./bin/s6-hiercopy
+./bin/s6-linkname
+./bin/s6-ln
+./bin/s6-ls
+./bin/s6-maximumtime
+./bin/s6-mkdir
+./bin/s6-mkfifo
+./bin/s6-nice
+./bin/s6-nuke
+./bin/s6-pause
+./bin/s6-printenv
+./bin/s6-quote
+./bin/s6-quote-filter
+./bin/s6-rename
+./bin/s6-rmrf
+./bin/s6-seq
+./bin/s6-sleep
+./bin/s6-sort
+./bin/s6-sync
+./bin/s6-tail
+./bin/s6-test
+./bin/s6-touch
+./bin/s6-true
+./bin/s6-uniquename
+./bin/s6-unquote
+./bin/s6-unquote-filter
+./bin/s6-update-symlinks
+./bin/seekablepipe
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-rc-0.0.3.0-linux-i486-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./libexec/
+./libexec/s6-rc-fdholder-filler
+./libexec/s6-rc-oneshot-run
+./bin/
+./bin/s6-rc-compile
+./bin/s6-rc-dryrun
+./bin/s6-rc-db
+./bin/s6-rc-bundle
+./sbin/
+./sbin/s6-rc-init
+./sbin/s6-rc
+./sbin/s6-rc-update
+./usr/
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/env-stage2
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/cont-init.d /s6/overlay-builder/overlay-rootfs-raw/etc/cont-finish.d /s6/overlay-builder/overlay-rootfs-raw/etc/fix-attrs.d /s6/overlay-builder/overlay-rootfs-raw/etc/services.d
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/supervise
++ chmod 0700 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/supervise
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/fix-attrs
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-newfifo /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-service /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-service-main
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/printcontenv
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/with-contenv /s6/overlay-builder/overlay-rootfs-raw/usr/bin/with-retries
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/init
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2-fixattrs.txt /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2-redirfd /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage3
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-no-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-no-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/finish
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/run
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-svscan-log/run
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-i486.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
+./
+./etc/
+./etc/s6/
+./etc/s6/init/
+./etc/s6/init/env/
+./etc/s6/init/env/PATH
+./etc/s6/init/init-stage1
+./etc/s6/init/init-stage2
+./etc/s6/init/init-stage2-fixattrs.txt
+./etc/s6/init/init-stage2-redirfd
+./etc/s6/init/init-stage3
+./etc/s6/init/env-stage2/
+./etc/s6/init-catchall/
+./etc/s6/init-catchall/init-stage1
+./etc/s6/init-catchall/init-stage2
+./etc/s6/init-no-catchall/
+./etc/s6/init-no-catchall/init-stage1
+./etc/s6/init-no-catchall/init-stage2
+./etc/s6/services/
+./etc/s6/services/.s6-svscan/
+./etc/s6/services/.s6-svscan/crash
+./etc/s6/services/.s6-svscan/finish
+./etc/s6/services/s6-fdholderd/
+./etc/s6/services/s6-fdholderd/rules/
+./etc/s6/services/s6-fdholderd/rules/uid/
+./etc/s6/services/s6-fdholderd/rules/uid/0/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_GETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_RETRIEVE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_SETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_STORE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/allow
+./etc/s6/services/s6-fdholderd/rules/uid/default/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/default/allow
+./etc/s6/services/s6-fdholderd/down
+./etc/s6/services/s6-fdholderd/notification-fd
+./etc/s6/services/s6-fdholderd/run
+./etc/s6/services/s6-fdholderd/supervise/
+./etc/s6/services/s6-svscan-log/
+./etc/s6/services/s6-svscan-log/run
+./etc/leapsecs.dat
+./etc/cont-init.d/
+./etc/cont-finish.d/
+./etc/fix-attrs.d/
+./etc/services.d/
+./usr/
+./usr/bin/
+./usr/bin/execlineb
+./usr/bin/fix-attrs
+./usr/bin/logutil-newfifo
+./usr/bin/logutil-service
+./usr/bin/logutil-service-main
+./usr/bin/printcontenv
+./usr/bin/with-contenv
+./usr/bin/with-retries
+./init
+./bin/
+./bin/background
+./bin/backtick
+./bin/cd
+./bin/define
+./bin/dollarat
+./bin/elgetopt
+./bin/elgetpositionals
+./bin/elglob
+./bin/emptyenv
+./bin/exec
+./bin/execlineb
+./bin/exit
+./bin/export
+./bin/fdblock
+./bin/fdclose
+./bin/fdmove
+./bin/fdswap
+./bin/fdreserve
+./bin/forbacktickx
+./bin/foreground
+./bin/forstdin
+./bin/forx
+./bin/getcwd
+./bin/getpid
+./bin/heredoc
+./bin/homeof
+./bin/if
+./bin/ifelse
+./bin/ifte
+./bin/ifthenelse
+./bin/import
+./bin/importas
+./bin/loopwhilex
+./bin/multidefine
+./bin/multisubstitute
+./bin/pipeline
+./bin/piperw
+./bin/redirfd
+./bin/runblock
+./bin/shift
+./bin/trap
+./bin/tryexec
+./bin/umask
+./bin/unexport
+./bin/wait
+./bin/withstdinas
+./bin/ucspilogd
+./bin/s6-ftrigrd
+./bin/s6-ftrig-listen1
+./bin/s6-ftrig-listen
+./bin/s6-ftrig-notify
+./bin/s6-ftrig-wait
+./bin/s6lockd
+./bin/s6-cleanfifodir
+./bin/s6-mkfifodir
+./bin/s6-svscan
+./bin/s6-supervise
+./bin/s6-svc
+./bin/s6-svscanctl
+./bin/s6-svok
+./bin/s6-svstat
+./bin/s6-svwait
+./bin/s6-svlisten1
+./bin/s6-svlisten
+./bin/s6-envdir
+./bin/s6-envuidgid
+./bin/s6-fghack
+./bin/s6-log
+./bin/s6-setlock
+./bin/s6-setsid
+./bin/s6-softlimit
+./bin/s6-tai64n
+./bin/s6-tai64nlocal
+./bin/s6-accessrules-cdb-from-fs
+./bin/s6-accessrules-fs-from-cdb
+./bin/s6-connlimit
+./bin/s6-ioconnect
+./bin/s6-ipcclient
+./bin/s6-ipcserver-access
+./bin/s6-ipcserver-socketbinder
+./bin/s6-ipcserver
+./bin/s6-ipcserverd
+./bin/s6-sudo
+./bin/s6-sudoc
+./bin/s6-sudod
+./bin/s6-fdholder-daemon
+./bin/s6-fdholderd
+./bin/s6-fdholder-delete
+./bin/s6-fdholder-deletec
+./bin/s6-fdholder-store
+./bin/s6-fdholder-storec
+./bin/s6-fdholder-retrieve
+./bin/s6-fdholder-retrievec
+./bin/s6-fdholder-list
+./bin/s6-fdholder-listc
+./bin/s6-fdholder-getdump
+./bin/s6-fdholder-getdumpc
+./bin/s6-fdholder-setdump
+./bin/s6-fdholder-setdumpc
+./bin/s6-fdholder-transferdump
+./bin/s6-fdholder-transferdumpc
+./bin/s6-basename
+./bin/s6-cat
+./bin/s6-chmod
+./bin/s6-chown
+./bin/s6-clock
+./bin/s6-cut
+./bin/s6-dirname
+./bin/s6-dumpenv
+./bin/s6-echo
+./bin/s6-env
+./bin/s6-expr
+./bin/s6-false
+./bin/s6-format-filter
+./bin/s6-grep
+./bin/s6-head
+./bin/s6-hiercopy
+./bin/s6-linkname
+./bin/s6-ln
+./bin/s6-ls
+./bin/s6-maximumtime
+./bin/s6-mkdir
+./bin/s6-mkfifo
+./bin/s6-nice
+./bin/s6-nuke
+./bin/s6-pause
+./bin/s6-printenv
+./bin/s6-quote
+./bin/s6-quote-filter
+./bin/s6-rename
+./bin/s6-rmrf
+./bin/s6-seq
+./bin/s6-sleep
+./bin/s6-sort
+./bin/s6-sync
+./bin/s6-tail
+./bin/s6-test
+./bin/s6-touch
+./bin/s6-true
+./bin/s6-uniquename
+./bin/s6-unquote
+./bin/s6-unquote-filter
+./bin/s6-update-symlinks
+./bin/seekablepipe
+./bin/s6-rc-compile
+./bin/s6-rc-dryrun
+./bin/s6-rc-db
+./bin/s6-rc-bundle
+./libexec/
+./libexec/s6lockd-helper
+./libexec/s6-rc-fdholder-filler
+./libexec/s6-rc-oneshot-run
+./sbin/
+./sbin/s6-applyuidgid
+./sbin/s6-setuidgid
+./sbin/s6-rc-init
+./sbin/s6-rc
+./sbin/s6-rc-update
++ for target in '"${targets[@]}"'
++ '[' '' == nobin ']'
++ overlaydstpath=/s6/overlay-builder/overlay-rootfs-raw
++ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-amd64.tar.gz
++ rm -rf /s6/overlay-builder/overlay-rootfs-raw
++ rm -f /s6/dist/s6-overlay-1.18.1.3-amd64.tar.gz
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw
++ mkdir -p /s6/dist
++ cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-raw/
++ '[' '' '!=' nobin ']'
++ packages=($(get_packages_with_versions_from_manifest "manifest-portable.txt"))
+++ get_packages_with_versions_from_manifest manifest-portable.txt
+++ manifest=manifest-portable.txt
+++ versions=()
+++ read -r line
++++ echo skalibs=2.3.10.0
++++ cut -d= -f1
+++ key=skalibs
++++ echo skalibs=2.3.10.0
++++ cut -d= -f2
+++ value=2.3.10.0
+++ [[ ! -z skalibs ]]
+++ [[ ! -z 2.3.10.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo execline=2.1.5.0
++++ cut -d= -f1
+++ key=execline
++++ echo execline=2.1.5.0
++++ cut -d= -f2
+++ value=2.1.5.0
+++ [[ ! -z execline ]]
+++ [[ ! -z 2.1.5.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6=2.3.0.0
++++ cut -d= -f1
+++ key=s6
++++ echo s6=2.3.0.0
++++ cut -d= -f2
+++ value=2.3.0.0
+++ [[ ! -z s6 ]]
+++ [[ ! -z 2.3.0.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6-portable-utils=2.0.6.0
++++ cut -d= -f1
+++ key=s6-portable-utils
++++ echo s6-portable-utils=2.0.6.0
++++ cut -d= -f2
+++ value=2.0.6.0
+++ [[ ! -z s6-portable-utils ]]
+++ [[ ! -z 2.0.6.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6-rc=0.0.3.0
++++ cut -d= -f1
+++ key=s6-rc
++++ echo s6-rc=0.0.3.0
++++ cut -d= -f2
+++ value=0.0.3.0
+++ [[ ! -z s6-rc ]]
+++ [[ ! -z 0.0.3.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo ''
++++ cut -d= -f1
+++ key=
++++ echo ''
++++ cut -d= -f2
+++ value=
+++ [[ ! -z '' ]]
+++ read -r line
+++ echo skalibs-2.3.10.0 execline-2.1.5.0 s6-2.3.0.0 s6-portable-utils-2.0.6.0 s6-rc-0.0.3.0
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/skalibs-2.3.10.0-linux-amd64-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/execline-2.1.5.0-linux-amd64-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./bin/
+./bin/background
+./bin/backtick
+./bin/cd
+./bin/define
+./bin/dollarat
+./bin/elgetopt
+./bin/elgetpositionals
+./bin/elglob
+./bin/emptyenv
+./bin/exec
+./bin/execlineb
+./bin/exit
+./bin/export
+./bin/fdblock
+./bin/fdclose
+./bin/fdmove
+./bin/fdswap
+./bin/fdreserve
+./bin/forbacktickx
+./bin/foreground
+./bin/forstdin
+./bin/forx
+./bin/getcwd
+./bin/getpid
+./bin/heredoc
+./bin/homeof
+./bin/if
+./bin/ifelse
+./bin/ifte
+./bin/ifthenelse
+./bin/import
+./bin/importas
+./bin/loopwhilex
+./bin/multidefine
+./bin/multisubstitute
+./bin/pipeline
+./bin/piperw
+./bin/redirfd
+./bin/runblock
+./bin/shift
+./bin/trap
+./bin/tryexec
+./bin/umask
+./bin/unexport
+./bin/wait
+./bin/withstdinas
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-2.3.0.0-linux-amd64-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./libexec/
+./libexec/s6lockd-helper
+./bin/
+./bin/ucspilogd
+./bin/s6-ftrigrd
+./bin/s6-ftrig-listen1
+./bin/s6-ftrig-listen
+./bin/s6-ftrig-notify
+./bin/s6-ftrig-wait
+./bin/s6lockd
+./bin/s6-cleanfifodir
+./bin/s6-mkfifodir
+./bin/s6-svscan
+./bin/s6-supervise
+./bin/s6-svc
+./bin/s6-svscanctl
+./bin/s6-svok
+./bin/s6-svstat
+./bin/s6-svwait
+./bin/s6-svlisten1
+./bin/s6-svlisten
+./bin/s6-envdir
+./bin/s6-envuidgid
+./bin/s6-fghack
+./bin/s6-log
+./bin/s6-setlock
+./bin/s6-setsid
+./bin/s6-softlimit
+./bin/s6-tai64n
+./bin/s6-tai64nlocal
+./bin/s6-accessrules-cdb-from-fs
+./bin/s6-accessrules-fs-from-cdb
+./bin/s6-connlimit
+./bin/s6-ioconnect
+./bin/s6-ipcclient
+./bin/s6-ipcserver-access
+./bin/s6-ipcserver-socketbinder
+./bin/s6-ipcserver
+./bin/s6-ipcserverd
+./bin/s6-sudo
+./bin/s6-sudoc
+./bin/s6-sudod
+./bin/s6-fdholder-daemon
+./bin/s6-fdholderd
+./bin/s6-fdholder-delete
+./bin/s6-fdholder-deletec
+./bin/s6-fdholder-store
+./bin/s6-fdholder-storec
+./bin/s6-fdholder-retrieve
+./bin/s6-fdholder-retrievec
+./bin/s6-fdholder-list
+./bin/s6-fdholder-listc
+./bin/s6-fdholder-getdump
+./bin/s6-fdholder-getdumpc
+./bin/s6-fdholder-setdump
+./bin/s6-fdholder-setdumpc
+./bin/s6-fdholder-transferdump
+./bin/s6-fdholder-transferdumpc
+./sbin/
+./sbin/s6-applyuidgid
+./sbin/s6-setuidgid
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-portable-utils-2.0.6.0-linux-amd64-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./bin/
+./bin/s6-basename
+./bin/s6-cat
+./bin/s6-chmod
+./bin/s6-chown
+./bin/s6-clock
+./bin/s6-cut
+./bin/s6-dirname
+./bin/s6-dumpenv
+./bin/s6-echo
+./bin/s6-env
+./bin/s6-expr
+./bin/s6-false
+./bin/s6-format-filter
+./bin/s6-grep
+./bin/s6-head
+./bin/s6-hiercopy
+./bin/s6-linkname
+./bin/s6-ln
+./bin/s6-ls
+./bin/s6-maximumtime
+./bin/s6-mkdir
+./bin/s6-mkfifo
+./bin/s6-nice
+./bin/s6-nuke
+./bin/s6-pause
+./bin/s6-printenv
+./bin/s6-quote
+./bin/s6-quote-filter
+./bin/s6-rename
+./bin/s6-rmrf
+./bin/s6-seq
+./bin/s6-sleep
+./bin/s6-sort
+./bin/s6-sync
+./bin/s6-tail
+./bin/s6-test
+./bin/s6-touch
+./bin/s6-true
+./bin/s6-uniquename
+./bin/s6-unquote
+./bin/s6-unquote-filter
+./bin/s6-update-symlinks
+./bin/seekablepipe
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-rc-0.0.3.0-linux-amd64-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./libexec/
+./libexec/s6-rc-fdholder-filler
+./libexec/s6-rc-oneshot-run
+./bin/
+./bin/s6-rc-compile
+./bin/s6-rc-dryrun
+./bin/s6-rc-db
+./bin/s6-rc-bundle
+./sbin/
+./sbin/s6-rc-init
+./sbin/s6-rc
+./sbin/s6-rc-update
+./usr/
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/env-stage2
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/cont-init.d /s6/overlay-builder/overlay-rootfs-raw/etc/cont-finish.d /s6/overlay-builder/overlay-rootfs-raw/etc/fix-attrs.d /s6/overlay-builder/overlay-rootfs-raw/etc/services.d
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/supervise
++ chmod 0700 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/supervise
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/fix-attrs
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-newfifo /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-service /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-service-main
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/printcontenv
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/with-contenv /s6/overlay-builder/overlay-rootfs-raw/usr/bin/with-retries
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/init
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2-fixattrs.txt /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2-redirfd /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage3
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-no-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-no-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/finish
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/run
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-svscan-log/run
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-amd64.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
+./
+./etc/
+./etc/s6/
+./etc/s6/init/
+./etc/s6/init/env/
+./etc/s6/init/env/PATH
+./etc/s6/init/init-stage1
+./etc/s6/init/init-stage2
+./etc/s6/init/init-stage2-fixattrs.txt
+./etc/s6/init/init-stage2-redirfd
+./etc/s6/init/init-stage3
+./etc/s6/init/env-stage2/
+./etc/s6/init-catchall/
+./etc/s6/init-catchall/init-stage1
+./etc/s6/init-catchall/init-stage2
+./etc/s6/init-no-catchall/
+./etc/s6/init-no-catchall/init-stage1
+./etc/s6/init-no-catchall/init-stage2
+./etc/s6/services/
+./etc/s6/services/.s6-svscan/
+./etc/s6/services/.s6-svscan/crash
+./etc/s6/services/.s6-svscan/finish
+./etc/s6/services/s6-fdholderd/
+./etc/s6/services/s6-fdholderd/rules/
+./etc/s6/services/s6-fdholderd/rules/uid/
+./etc/s6/services/s6-fdholderd/rules/uid/0/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_GETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_RETRIEVE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_SETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_STORE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/allow
+./etc/s6/services/s6-fdholderd/rules/uid/default/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/default/allow
+./etc/s6/services/s6-fdholderd/down
+./etc/s6/services/s6-fdholderd/notification-fd
+./etc/s6/services/s6-fdholderd/run
+./etc/s6/services/s6-fdholderd/supervise/
+./etc/s6/services/s6-svscan-log/
+./etc/s6/services/s6-svscan-log/run
+./etc/leapsecs.dat
+./etc/cont-init.d/
+./etc/cont-finish.d/
+./etc/fix-attrs.d/
+./etc/services.d/
+./usr/
+./usr/bin/
+./usr/bin/execlineb
+./usr/bin/fix-attrs
+./usr/bin/logutil-newfifo
+./usr/bin/logutil-service
+./usr/bin/logutil-service-main
+./usr/bin/printcontenv
+./usr/bin/with-contenv
+./usr/bin/with-retries
+./init
+./bin/
+./bin/background
+./bin/backtick
+./bin/cd
+./bin/define
+./bin/dollarat
+./bin/elgetopt
+./bin/elgetpositionals
+./bin/elglob
+./bin/emptyenv
+./bin/exec
+./bin/execlineb
+./bin/exit
+./bin/export
+./bin/fdblock
+./bin/fdclose
+./bin/fdmove
+./bin/fdswap
+./bin/fdreserve
+./bin/forbacktickx
+./bin/foreground
+./bin/forstdin
+./bin/forx
+./bin/getcwd
+./bin/getpid
+./bin/heredoc
+./bin/homeof
+./bin/if
+./bin/ifelse
+./bin/ifte
+./bin/ifthenelse
+./bin/import
+./bin/importas
+./bin/loopwhilex
+./bin/multidefine
+./bin/multisubstitute
+./bin/pipeline
+./bin/piperw
+./bin/redirfd
+./bin/runblock
+./bin/shift
+./bin/trap
+./bin/tryexec
+./bin/umask
+./bin/unexport
+./bin/wait
+./bin/withstdinas
+./bin/ucspilogd
+./bin/s6-ftrigrd
+./bin/s6-ftrig-listen1
+./bin/s6-ftrig-listen
+./bin/s6-ftrig-notify
+./bin/s6-ftrig-wait
+./bin/s6lockd
+./bin/s6-cleanfifodir
+./bin/s6-mkfifodir
+./bin/s6-svscan
+./bin/s6-supervise
+./bin/s6-svc
+./bin/s6-svscanctl
+./bin/s6-svok
+./bin/s6-svstat
+./bin/s6-svwait
+./bin/s6-svlisten1
+./bin/s6-svlisten
+./bin/s6-envdir
+./bin/s6-envuidgid
+./bin/s6-fghack
+./bin/s6-log
+./bin/s6-setlock
+./bin/s6-setsid
+./bin/s6-softlimit
+./bin/s6-tai64n
+./bin/s6-tai64nlocal
+./bin/s6-accessrules-cdb-from-fs
+./bin/s6-accessrules-fs-from-cdb
+./bin/s6-connlimit
+./bin/s6-ioconnect
+./bin/s6-ipcclient
+./bin/s6-ipcserver-access
+./bin/s6-ipcserver-socketbinder
+./bin/s6-ipcserver
+./bin/s6-ipcserverd
+./bin/s6-sudo
+./bin/s6-sudoc
+./bin/s6-sudod
+./bin/s6-fdholder-daemon
+./bin/s6-fdholderd
+./bin/s6-fdholder-delete
+./bin/s6-fdholder-deletec
+./bin/s6-fdholder-store
+./bin/s6-fdholder-storec
+./bin/s6-fdholder-retrieve
+./bin/s6-fdholder-retrievec
+./bin/s6-fdholder-list
+./bin/s6-fdholder-listc
+./bin/s6-fdholder-getdump
+./bin/s6-fdholder-getdumpc
+./bin/s6-fdholder-setdump
+./bin/s6-fdholder-setdumpc
+./bin/s6-fdholder-transferdump
+./bin/s6-fdholder-transferdumpc
+./bin/s6-basename
+./bin/s6-cat
+./bin/s6-chmod
+./bin/s6-chown
+./bin/s6-clock
+./bin/s6-cut
+./bin/s6-dirname
+./bin/s6-dumpenv
+./bin/s6-echo
+./bin/s6-env
+./bin/s6-expr
+./bin/s6-false
+./bin/s6-format-filter
+./bin/s6-grep
+./bin/s6-head
+./bin/s6-hiercopy
+./bin/s6-linkname
+./bin/s6-ln
+./bin/s6-ls
+./bin/s6-maximumtime
+./bin/s6-mkdir
+./bin/s6-mkfifo
+./bin/s6-nice
+./bin/s6-nuke
+./bin/s6-pause
+./bin/s6-printenv
+./bin/s6-quote
+./bin/s6-quote-filter
+./bin/s6-rename
+./bin/s6-rmrf
+./bin/s6-seq
+./bin/s6-sleep
+./bin/s6-sort
+./bin/s6-sync
+./bin/s6-tail
+./bin/s6-test
+./bin/s6-touch
+./bin/s6-true
+./bin/s6-uniquename
+./bin/s6-unquote
+./bin/s6-unquote-filter
+./bin/s6-update-symlinks
+./bin/seekablepipe
+./bin/s6-rc-compile
+./bin/s6-rc-dryrun
+./bin/s6-rc-db
+./bin/s6-rc-bundle
+./libexec/
+./libexec/s6lockd-helper
+./libexec/s6-rc-fdholder-filler
+./libexec/s6-rc-oneshot-run
+./sbin/
+./sbin/s6-applyuidgid
+./sbin/s6-setuidgid
+./sbin/s6-rc-init
+./sbin/s6-rc
+./sbin/s6-rc-update
++ for target in '"${targets[@]}"'
++ '[' '' == nobin ']'
++ overlaydstpath=/s6/overlay-builder/overlay-rootfs-raw
++ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-armhf.tar.gz
++ rm -rf /s6/overlay-builder/overlay-rootfs-raw
++ rm -f /s6/dist/s6-overlay-1.18.1.3-armhf.tar.gz
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw
++ mkdir -p /s6/dist
++ cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-raw/
++ '[' '' '!=' nobin ']'
++ packages=($(get_packages_with_versions_from_manifest "manifest-portable.txt"))
+++ get_packages_with_versions_from_manifest manifest-portable.txt
+++ manifest=manifest-portable.txt
+++ versions=()
+++ read -r line
++++ echo skalibs=2.3.10.0
++++ cut -d= -f1
+++ key=skalibs
++++ echo skalibs=2.3.10.0
++++ cut -d= -f2
+++ value=2.3.10.0
+++ [[ ! -z skalibs ]]
+++ [[ ! -z 2.3.10.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo execline=2.1.5.0
++++ cut -d= -f1
+++ key=execline
++++ echo execline=2.1.5.0
++++ cut -d= -f2
+++ value=2.1.5.0
+++ [[ ! -z execline ]]
+++ [[ ! -z 2.1.5.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6=2.3.0.0
++++ cut -d= -f1
+++ key=s6
++++ echo s6=2.3.0.0
++++ cut -d= -f2
+++ value=2.3.0.0
+++ [[ ! -z s6 ]]
+++ [[ ! -z 2.3.0.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6-portable-utils=2.0.6.0
++++ cut -d= -f1
+++ key=s6-portable-utils
++++ echo s6-portable-utils=2.0.6.0
++++ cut -d= -f2
+++ value=2.0.6.0
+++ [[ ! -z s6-portable-utils ]]
+++ [[ ! -z 2.0.6.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo s6-rc=0.0.3.0
++++ cut -d= -f1
+++ key=s6-rc
++++ echo s6-rc=0.0.3.0
++++ cut -d= -f2
+++ value=0.0.3.0
+++ [[ ! -z s6-rc ]]
+++ [[ ! -z 0.0.3.0 ]]
+++ versions+=("${key}-${value}")
+++ read -r line
++++ echo ''
++++ cut -d= -f1
+++ key=
++++ echo ''
++++ cut -d= -f2
+++ value=
+++ [[ ! -z '' ]]
+++ read -r line
+++ echo skalibs-2.3.10.0 execline-2.1.5.0 s6-2.3.0.0 s6-portable-utils-2.0.6.0 s6-rc-0.0.3.0
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/skalibs-2.3.10.0-linux-armhf-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/execline-2.1.5.0-linux-armhf-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./bin/
+./bin/background
+./bin/backtick
+./bin/cd
+./bin/define
+./bin/dollarat
+./bin/elgetopt
+./bin/elgetpositionals
+./bin/elglob
+./bin/emptyenv
+./bin/exec
+./bin/execlineb
+./bin/exit
+./bin/export
+./bin/fdblock
+./bin/fdclose
+./bin/fdmove
+./bin/fdswap
+./bin/fdreserve
+./bin/forbacktickx
+./bin/foreground
+./bin/forstdin
+./bin/forx
+./bin/getcwd
+./bin/getpid
+./bin/heredoc
+./bin/homeof
+./bin/if
+./bin/ifelse
+./bin/ifte
+./bin/ifthenelse
+./bin/import
+./bin/importas
+./bin/loopwhilex
+./bin/multidefine
+./bin/multisubstitute
+./bin/pipeline
+./bin/piperw
+./bin/redirfd
+./bin/runblock
+./bin/shift
+./bin/trap
+./bin/tryexec
+./bin/umask
+./bin/unexport
+./bin/wait
+./bin/withstdinas
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-2.3.0.0-linux-armhf-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./libexec/
+./libexec/s6lockd-helper
+./bin/
+./bin/ucspilogd
+./bin/s6-ftrigrd
+./bin/s6-ftrig-listen1
+./bin/s6-ftrig-listen
+./bin/s6-ftrig-notify
+./bin/s6-ftrig-wait
+./bin/s6lockd
+./bin/s6-cleanfifodir
+./bin/s6-mkfifodir
+./bin/s6-svscan
+./bin/s6-supervise
+./bin/s6-svc
+./bin/s6-svscanctl
+./bin/s6-svok
+./bin/s6-svstat
+./bin/s6-svwait
+./bin/s6-svlisten1
+./bin/s6-svlisten
+./bin/s6-envdir
+./bin/s6-envuidgid
+./bin/s6-fghack
+./bin/s6-log
+./bin/s6-setlock
+./bin/s6-setsid
+./bin/s6-softlimit
+./bin/s6-tai64n
+./bin/s6-tai64nlocal
+./bin/s6-accessrules-cdb-from-fs
+./bin/s6-accessrules-fs-from-cdb
+./bin/s6-connlimit
+./bin/s6-ioconnect
+./bin/s6-ipcclient
+./bin/s6-ipcserver-access
+./bin/s6-ipcserver-socketbinder
+./bin/s6-ipcserver
+./bin/s6-ipcserverd
+./bin/s6-sudo
+./bin/s6-sudoc
+./bin/s6-sudod
+./bin/s6-fdholder-daemon
+./bin/s6-fdholderd
+./bin/s6-fdholder-delete
+./bin/s6-fdholder-deletec
+./bin/s6-fdholder-store
+./bin/s6-fdholder-storec
+./bin/s6-fdholder-retrieve
+./bin/s6-fdholder-retrievec
+./bin/s6-fdholder-list
+./bin/s6-fdholder-listc
+./bin/s6-fdholder-getdump
+./bin/s6-fdholder-getdumpc
+./bin/s6-fdholder-setdump
+./bin/s6-fdholder-setdumpc
+./bin/s6-fdholder-transferdump
+./bin/s6-fdholder-transferdumpc
+./sbin/
+./sbin/s6-applyuidgid
+./sbin/s6-setuidgid
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-portable-utils-2.0.6.0-linux-armhf-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./bin/
+./bin/s6-basename
+./bin/s6-cat
+./bin/s6-chmod
+./bin/s6-chown
+./bin/s6-clock
+./bin/s6-cut
+./bin/s6-dirname
+./bin/s6-dumpenv
+./bin/s6-echo
+./bin/s6-env
+./bin/s6-expr
+./bin/s6-false
+./bin/s6-format-filter
+./bin/s6-grep
+./bin/s6-head
+./bin/s6-hiercopy
+./bin/s6-linkname
+./bin/s6-ln
+./bin/s6-ls
+./bin/s6-maximumtime
+./bin/s6-mkdir
+./bin/s6-mkfifo
+./bin/s6-nice
+./bin/s6-nuke
+./bin/s6-pause
+./bin/s6-printenv
+./bin/s6-quote
+./bin/s6-quote-filter
+./bin/s6-rename
+./bin/s6-rmrf
+./bin/s6-seq
+./bin/s6-sleep
+./bin/s6-sort
+./bin/s6-sync
+./bin/s6-tail
+./bin/s6-test
+./bin/s6-touch
+./bin/s6-true
+./bin/s6-uniquename
+./bin/s6-unquote
+./bin/s6-unquote-filter
+./bin/s6-update-symlinks
+./bin/seekablepipe
+./usr/
++ for package in '"${packages[@]}"'
++ tar xvfz /s6/dist/s6-rc-0.0.3.0-linux-armhf-bin.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw
+./
+./libexec/
+./libexec/s6-rc-fdholder-filler
+./libexec/s6-rc-oneshot-run
+./bin/
+./bin/s6-rc-compile
+./bin/s6-rc-dryrun
+./bin/s6-rc-db
+./bin/s6-rc-bundle
+./sbin/
+./sbin/s6-rc-init
+./sbin/s6-rc
+./sbin/s6-rc-update
+./usr/
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/env-stage2
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/cont-init.d /s6/overlay-builder/overlay-rootfs-raw/etc/cont-finish.d /s6/overlay-builder/overlay-rootfs-raw/etc/fix-attrs.d /s6/overlay-builder/overlay-rootfs-raw/etc/services.d
++ mkdir -p /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/supervise
++ chmod 0700 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/supervise
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/fix-attrs
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-newfifo /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-service /s6/overlay-builder/overlay-rootfs-raw/usr/bin/logutil-service-main
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/printcontenv
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/usr/bin/with-contenv /s6/overlay-builder/overlay-rootfs-raw/usr/bin/with-retries
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/init
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2-fixattrs.txt /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage2-redirfd /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init/init-stage3
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-no-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/init-no-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/finish
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/run
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-svscan-log/run
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-armhf.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
+./
+./etc/
+./etc/s6/
+./etc/s6/init/
+./etc/s6/init/env/
+./etc/s6/init/env/PATH
+./etc/s6/init/init-stage1
+./etc/s6/init/init-stage2
+./etc/s6/init/init-stage2-fixattrs.txt
+./etc/s6/init/init-stage2-redirfd
+./etc/s6/init/init-stage3
+./etc/s6/init/env-stage2/
+./etc/s6/init-catchall/
+./etc/s6/init-catchall/init-stage1
+./etc/s6/init-catchall/init-stage2
+./etc/s6/init-no-catchall/
+./etc/s6/init-no-catchall/init-stage1
+./etc/s6/init-no-catchall/init-stage2
+./etc/s6/services/
+./etc/s6/services/.s6-svscan/
+./etc/s6/services/.s6-svscan/crash
+./etc/s6/services/.s6-svscan/finish
+./etc/s6/services/s6-fdholderd/
+./etc/s6/services/s6-fdholderd/rules/
+./etc/s6/services/s6-fdholderd/rules/uid/
+./etc/s6/services/s6-fdholderd/rules/uid/0/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_GETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_RETRIEVE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_SETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_STORE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/allow
+./etc/s6/services/s6-fdholderd/rules/uid/default/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/default/allow
+./etc/s6/services/s6-fdholderd/down
+./etc/s6/services/s6-fdholderd/notification-fd
+./etc/s6/services/s6-fdholderd/run
+./etc/s6/services/s6-fdholderd/supervise/
+./etc/s6/services/s6-svscan-log/
+./etc/s6/services/s6-svscan-log/run
+./etc/leapsecs.dat
+./etc/cont-init.d/
+./etc/cont-finish.d/
+./etc/fix-attrs.d/
+./etc/services.d/
+./usr/
+./usr/bin/
+./usr/bin/execlineb
+./usr/bin/fix-attrs
+./usr/bin/logutil-newfifo
+./usr/bin/logutil-service
+./usr/bin/logutil-service-main
+./usr/bin/printcontenv
+./usr/bin/with-contenv
+./usr/bin/with-retries
+./init
+./bin/
+./bin/background
+./bin/backtick
+./bin/cd
+./bin/define
+./bin/dollarat
+./bin/elgetopt
+./bin/elgetpositionals
+./bin/elglob
+./bin/emptyenv
+./bin/exec
+./bin/execlineb
+./bin/exit
+./bin/export
+./bin/fdblock
+./bin/fdclose
+./bin/fdmove
+./bin/fdswap
+./bin/fdreserve
+./bin/forbacktickx
+./bin/foreground
+./bin/forstdin
+./bin/forx
+./bin/getcwd
+./bin/getpid
+./bin/heredoc
+./bin/homeof
+./bin/if
+./bin/ifelse
+./bin/ifte
+./bin/ifthenelse
+./bin/import
+./bin/importas
+./bin/loopwhilex
+./bin/multidefine
+./bin/multisubstitute
+./bin/pipeline
+./bin/piperw
+./bin/redirfd
+./bin/runblock
+./bin/shift
+./bin/trap
+./bin/tryexec
+./bin/umask
+./bin/unexport
+./bin/wait
+./bin/withstdinas
+./bin/ucspilogd
+./bin/s6-ftrigrd
+./bin/s6-ftrig-listen1
+./bin/s6-ftrig-listen
+./bin/s6-ftrig-notify
+./bin/s6-ftrig-wait
+./bin/s6lockd
+./bin/s6-cleanfifodir
+./bin/s6-mkfifodir
+./bin/s6-svscan
+./bin/s6-supervise
+./bin/s6-svc
+./bin/s6-svscanctl
+./bin/s6-svok
+./bin/s6-svstat
+./bin/s6-svwait
+./bin/s6-svlisten1
+./bin/s6-svlisten
+./bin/s6-envdir
+./bin/s6-envuidgid
+./bin/s6-fghack
+./bin/s6-log
+./bin/s6-setlock
+./bin/s6-setsid
+./bin/s6-softlimit
+./bin/s6-tai64n
+./bin/s6-tai64nlocal
+./bin/s6-accessrules-cdb-from-fs
+./bin/s6-accessrules-fs-from-cdb
+./bin/s6-connlimit
+./bin/s6-ioconnect
+./bin/s6-ipcclient
+./bin/s6-ipcserver-access
+./bin/s6-ipcserver-socketbinder
+./bin/s6-ipcserver
+./bin/s6-ipcserverd
+./bin/s6-sudo
+./bin/s6-sudoc
+./bin/s6-sudod
+./bin/s6-fdholder-daemon
+./bin/s6-fdholderd
+./bin/s6-fdholder-delete
+./bin/s6-fdholder-deletec
+./bin/s6-fdholder-store
+./bin/s6-fdholder-storec
+./bin/s6-fdholder-retrieve
+./bin/s6-fdholder-retrievec
+./bin/s6-fdholder-list
+./bin/s6-fdholder-listc
+./bin/s6-fdholder-getdump
+./bin/s6-fdholder-getdumpc
+./bin/s6-fdholder-setdump
+./bin/s6-fdholder-setdumpc
+./bin/s6-fdholder-transferdump
+./bin/s6-fdholder-transferdumpc
+./bin/s6-basename
+./bin/s6-cat
+./bin/s6-chmod
+./bin/s6-chown
+./bin/s6-clock
+./bin/s6-cut
+./bin/s6-dirname
+./bin/s6-dumpenv
+./bin/s6-echo
+./bin/s6-env
+./bin/s6-expr
+./bin/s6-false
+./bin/s6-format-filter
+./bin/s6-grep
+./bin/s6-head
+./bin/s6-hiercopy
+./bin/s6-linkname
+./bin/s6-ln
+./bin/s6-ls
+./bin/s6-maximumtime
+./bin/s6-mkdir
+./bin/s6-mkfifo
+./bin/s6-nice
+./bin/s6-nuke
+./bin/s6-pause
+./bin/s6-printenv
+./bin/s6-quote
+./bin/s6-quote-filter
+./bin/s6-rename
+./bin/s6-rmrf
+./bin/s6-seq
+./bin/s6-sleep
+./bin/s6-sort
+./bin/s6-sync
+./bin/s6-tail
+./bin/s6-test
+./bin/s6-touch
+./bin/s6-true
+./bin/s6-uniquename
+./bin/s6-unquote
+./bin/s6-unquote-filter
+./bin/s6-update-symlinks
+./bin/seekablepipe
+./bin/s6-rc-compile
+./bin/s6-rc-dryrun
+./bin/s6-rc-db
+./bin/s6-rc-bundle
+./libexec/
+./libexec/s6lockd-helper
+./libexec/s6-rc-fdholder-filler
+./libexec/s6-rc-oneshot-run
+./sbin/
+./sbin/s6-applyuidgid
+./sbin/s6-setuidgid
+./sbin/s6-rc-init
+./sbin/s6-rc
+./sbin/s6-rc-update
++ for edition in '"${editions[@]}"'
++ for target in '"${targets[@]}"'
++ '[' nobin == nobin ']'
++ overlaydstpath=/s6/overlay-builder/overlay-rootfs-nobin
++ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ rm -rf /s6/overlay-builder/overlay-rootfs-nobin
++ rm -f /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin
++ mkdir -p /s6/dist
++ cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-nobin/
++ '[' nobin '!=' nobin ']'
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/env-stage2
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/cont-init.d /s6/overlay-builder/overlay-rootfs-nobin/etc/cont-finish.d /s6/overlay-builder/overlay-rootfs-nobin/etc/fix-attrs.d /s6/overlay-builder/overlay-rootfs-nobin/etc/services.d
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/supervise
++ chmod 0700 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/supervise
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/fix-attrs
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-newfifo /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-service /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-service-main
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/printcontenv
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/with-contenv /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/with-retries
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/init
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2-fixattrs.txt /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2-redirfd /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage3
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-no-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-no-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/finish
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/run
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-svscan-log/run
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
+./
+./etc/
+./etc/s6/
+./etc/s6/init/
+./etc/s6/init/env/
+./etc/s6/init/env/PATH
+./etc/s6/init/init-stage1
+./etc/s6/init/init-stage2
+./etc/s6/init/init-stage2-fixattrs.txt
+./etc/s6/init/init-stage2-redirfd
+./etc/s6/init/init-stage3
+./etc/s6/init/env-stage2/
+./etc/s6/init-catchall/
+./etc/s6/init-catchall/init-stage1
+./etc/s6/init-catchall/init-stage2
+./etc/s6/init-no-catchall/
+./etc/s6/init-no-catchall/init-stage1
+./etc/s6/init-no-catchall/init-stage2
+./etc/s6/services/
+./etc/s6/services/.s6-svscan/
+./etc/s6/services/.s6-svscan/crash
+./etc/s6/services/.s6-svscan/finish
+./etc/s6/services/s6-fdholderd/
+./etc/s6/services/s6-fdholderd/rules/
+./etc/s6/services/s6-fdholderd/rules/uid/
+./etc/s6/services/s6-fdholderd/rules/uid/0/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_GETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_RETRIEVE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_SETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_STORE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/allow
+./etc/s6/services/s6-fdholderd/rules/uid/default/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/default/allow
+./etc/s6/services/s6-fdholderd/down
+./etc/s6/services/s6-fdholderd/notification-fd
+./etc/s6/services/s6-fdholderd/run
+./etc/s6/services/s6-fdholderd/supervise/
+./etc/s6/services/s6-svscan-log/
+./etc/s6/services/s6-svscan-log/run
+./etc/leapsecs.dat
+./etc/cont-init.d/
+./etc/cont-finish.d/
+./etc/fix-attrs.d/
+./etc/services.d/
+./usr/
+./usr/bin/
+./usr/bin/execlineb
+./usr/bin/fix-attrs
+./usr/bin/logutil-newfifo
+./usr/bin/logutil-service
+./usr/bin/logutil-service-main
+./usr/bin/printcontenv
+./usr/bin/with-contenv
+./usr/bin/with-retries
+./init
++ for target in '"${targets[@]}"'
++ '[' nobin == nobin ']'
++ overlaydstpath=/s6/overlay-builder/overlay-rootfs-nobin
++ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ rm -rf /s6/overlay-builder/overlay-rootfs-nobin
++ rm -f /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin
++ mkdir -p /s6/dist
++ cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-nobin/
++ '[' nobin '!=' nobin ']'
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/env-stage2
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/cont-init.d /s6/overlay-builder/overlay-rootfs-nobin/etc/cont-finish.d /s6/overlay-builder/overlay-rootfs-nobin/etc/fix-attrs.d /s6/overlay-builder/overlay-rootfs-nobin/etc/services.d
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/supervise
++ chmod 0700 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/supervise
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/fix-attrs
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-newfifo /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-service /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-service-main
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/printcontenv
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/with-contenv /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/with-retries
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/init
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2-fixattrs.txt /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2-redirfd /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage3
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-no-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-no-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/finish
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/run
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-svscan-log/run
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
+./
+./etc/
+./etc/s6/
+./etc/s6/init/
+./etc/s6/init/env/
+./etc/s6/init/env/PATH
+./etc/s6/init/init-stage1
+./etc/s6/init/init-stage2
+./etc/s6/init/init-stage2-fixattrs.txt
+./etc/s6/init/init-stage2-redirfd
+./etc/s6/init/init-stage3
+./etc/s6/init/env-stage2/
+./etc/s6/init-catchall/
+./etc/s6/init-catchall/init-stage1
+./etc/s6/init-catchall/init-stage2
+./etc/s6/init-no-catchall/
+./etc/s6/init-no-catchall/init-stage1
+./etc/s6/init-no-catchall/init-stage2
+./etc/s6/services/
+./etc/s6/services/.s6-svscan/
+./etc/s6/services/.s6-svscan/crash
+./etc/s6/services/.s6-svscan/finish
+./etc/s6/services/s6-fdholderd/
+./etc/s6/services/s6-fdholderd/rules/
+./etc/s6/services/s6-fdholderd/rules/uid/
+./etc/s6/services/s6-fdholderd/rules/uid/0/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_GETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_RETRIEVE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_SETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_STORE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/allow
+./etc/s6/services/s6-fdholderd/rules/uid/default/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/default/allow
+./etc/s6/services/s6-fdholderd/down
+./etc/s6/services/s6-fdholderd/notification-fd
+./etc/s6/services/s6-fdholderd/run
+./etc/s6/services/s6-fdholderd/supervise/
+./etc/s6/services/s6-svscan-log/
+./etc/s6/services/s6-svscan-log/run
+./etc/leapsecs.dat
+./etc/cont-init.d/
+./etc/cont-finish.d/
+./etc/fix-attrs.d/
+./etc/services.d/
+./usr/
+./usr/bin/
+./usr/bin/execlineb
+./usr/bin/fix-attrs
+./usr/bin/logutil-newfifo
+./usr/bin/logutil-service
+./usr/bin/logutil-service-main
+./usr/bin/printcontenv
+./usr/bin/with-contenv
+./usr/bin/with-retries
+./init
++ for target in '"${targets[@]}"'
++ '[' nobin == nobin ']'
++ overlaydstpath=/s6/overlay-builder/overlay-rootfs-nobin
++ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ rm -rf /s6/overlay-builder/overlay-rootfs-nobin
++ rm -f /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin
++ mkdir -p /s6/dist
++ cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-nobin/
++ '[' nobin '!=' nobin ']'
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/env-stage2
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/cont-init.d /s6/overlay-builder/overlay-rootfs-nobin/etc/cont-finish.d /s6/overlay-builder/overlay-rootfs-nobin/etc/fix-attrs.d /s6/overlay-builder/overlay-rootfs-nobin/etc/services.d
++ mkdir -p /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/supervise
++ chmod 0700 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/supervise
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/fix-attrs
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-newfifo /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-service /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/logutil-service-main
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/printcontenv
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/with-contenv /s6/overlay-builder/overlay-rootfs-nobin/usr/bin/with-retries
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/init
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2-fixattrs.txt /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage2-redirfd /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init/init-stage3
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-no-catchall/init-stage1 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/init-no-catchall/init-stage2
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/finish
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/run
++ chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-svscan-log/run
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
+./
+./etc/
+./etc/s6/
+./etc/s6/init/
+./etc/s6/init/env/
+./etc/s6/init/env/PATH
+./etc/s6/init/init-stage1
+./etc/s6/init/init-stage2
+./etc/s6/init/init-stage2-fixattrs.txt
+./etc/s6/init/init-stage2-redirfd
+./etc/s6/init/init-stage3
+./etc/s6/init/env-stage2/
+./etc/s6/init-catchall/
+./etc/s6/init-catchall/init-stage1
+./etc/s6/init-catchall/init-stage2
+./etc/s6/init-no-catchall/
+./etc/s6/init-no-catchall/init-stage1
+./etc/s6/init-no-catchall/init-stage2
+./etc/s6/services/
+./etc/s6/services/.s6-svscan/
+./etc/s6/services/.s6-svscan/crash
+./etc/s6/services/.s6-svscan/finish
+./etc/s6/services/s6-fdholderd/
+./etc/s6/services/s6-fdholderd/rules/
+./etc/s6/services/s6-fdholderd/rules/uid/
+./etc/s6/services/s6-fdholderd/rules/uid/0/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_GETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_RETRIEVE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_SETDUMP
+./etc/s6/services/s6-fdholderd/rules/uid/0/env/S6_FDHOLDER_STORE_REGEX
+./etc/s6/services/s6-fdholderd/rules/uid/0/allow
+./etc/s6/services/s6-fdholderd/rules/uid/default/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/
+./etc/s6/services/s6-fdholderd/rules/uid/default/env/S6_FDHOLDER_LIST
+./etc/s6/services/s6-fdholderd/rules/uid/default/allow
+./etc/s6/services/s6-fdholderd/down
+./etc/s6/services/s6-fdholderd/notification-fd
+./etc/s6/services/s6-fdholderd/run
+./etc/s6/services/s6-fdholderd/supervise/
+./etc/s6/services/s6-svscan-log/
+./etc/s6/services/s6-svscan-log/run
+./etc/leapsecs.dat
+./etc/cont-init.d/
+./etc/cont-finish.d/
+./etc/fix-attrs.d/
+./etc/services.d/
+./usr/
+./usr/bin/
+./usr/bin/execlineb
+./usr/bin/fix-attrs
+./usr/bin/logutil-newfifo
+./usr/bin/logutil-service
+./usr/bin/logutil-service-main
+./usr/bin/printcontenv
+./usr/bin/with-contenv
+./usr/bin/with-retries
+./init
++ exit 0
