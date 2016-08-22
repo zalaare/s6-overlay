@@ -1,5 +1,5 @@
-+ RELEASE_VERSION=1.18.1.3
-+ SKAWARE_VERSION=1.18.1
++ RELEASE_VERSION=1.18.2
++ SKAWARE_VERSION=1.18
 + OVERLAY_SRC_PATH=/s6/overlay-builder/overlay-rootfs
 + OVERLAY_DST_PATH=/s6/overlay-builder/overlay-rootfs
 + targets=('i486' 'amd64' 'armhf')
@@ -9,9 +9,9 @@
 + for target in '"${targets[@]}"'
 + '[' '' == nobin ']'
 + overlaydstpath=/s6/overlay-builder/overlay-rootfs-raw
-+ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-i486.tar.gz
++ overlaytarpath=/s6/dist/s6-overlay-1.18.2-i486.tar.gz
 + rm -rf /s6/overlay-builder/overlay-rootfs-raw
-+ rm -f /s6/dist/s6-overlay-1.18.1.3-i486.tar.gz
++ rm -f /s6/dist/s6-overlay-1.18.2-i486.tar.gz
 + mkdir -p /s6/overlay-builder/overlay-rootfs-raw
 + mkdir -p /s6/dist
 + cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-raw/
@@ -24,8 +24,8 @@
 +++ echo skalibs=2.3.10.0
 +++ cut -d= -f1
 ++ key=skalibs
-+++ echo skalibs=2.3.10.0
 +++ cut -d= -f2
++++ echo skalibs=2.3.10.0
 ++ value=2.3.10.0
 ++ [[ ! -z skalibs ]]
 ++ [[ ! -z 2.3.10.0 ]]
@@ -279,7 +279,7 @@
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/finish
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/run
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-svscan-log/run
-+ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-i486.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.2-i486.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
 ./
 ./etc/
 ./etc/s6/
@@ -501,9 +501,9 @@
 + for target in '"${targets[@]}"'
 + '[' '' == nobin ']'
 + overlaydstpath=/s6/overlay-builder/overlay-rootfs-raw
-+ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-amd64.tar.gz
++ overlaytarpath=/s6/dist/s6-overlay-1.18.2-amd64.tar.gz
 + rm -rf /s6/overlay-builder/overlay-rootfs-raw
-+ rm -f /s6/dist/s6-overlay-1.18.1.3-amd64.tar.gz
++ rm -f /s6/dist/s6-overlay-1.18.2-amd64.tar.gz
 + mkdir -p /s6/overlay-builder/overlay-rootfs-raw
 + mkdir -p /s6/dist
 + cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-raw/
@@ -523,18 +523,18 @@
 ++ [[ ! -z 2.3.10.0 ]]
 ++ versions+=("${key}-${value}")
 ++ read -r line
-+++ echo execline=2.1.5.0
 +++ cut -d= -f1
-++ key=execline
 +++ echo execline=2.1.5.0
+++ key=execline
 +++ cut -d= -f2
++++ echo execline=2.1.5.0
 ++ value=2.1.5.0
 ++ [[ ! -z execline ]]
 ++ [[ ! -z 2.1.5.0 ]]
 ++ versions+=("${key}-${value}")
 ++ read -r line
-+++ echo s6=2.3.0.0
 +++ cut -d= -f1
++++ echo s6=2.3.0.0
 ++ key=s6
 +++ echo s6=2.3.0.0
 +++ cut -d= -f2
@@ -771,7 +771,7 @@
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/finish
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/run
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-svscan-log/run
-+ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-amd64.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.2-amd64.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
 ./
 ./etc/
 ./etc/s6/
@@ -993,9 +993,9 @@
 + for target in '"${targets[@]}"'
 + '[' '' == nobin ']'
 + overlaydstpath=/s6/overlay-builder/overlay-rootfs-raw
-+ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-armhf.tar.gz
++ overlaytarpath=/s6/dist/s6-overlay-1.18.2-armhf.tar.gz
 + rm -rf /s6/overlay-builder/overlay-rootfs-raw
-+ rm -f /s6/dist/s6-overlay-1.18.1.3-armhf.tar.gz
++ rm -f /s6/dist/s6-overlay-1.18.2-armhf.tar.gz
 + mkdir -p /s6/overlay-builder/overlay-rootfs-raw
 + mkdir -p /s6/dist
 + cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-raw/
@@ -1263,7 +1263,7 @@
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/.s6-svscan/finish
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-fdholderd/run
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-raw/etc/s6/services/s6-svscan-log/run
-+ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-armhf.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.2-armhf.tar.gz -C /s6/overlay-builder/overlay-rootfs-raw ./
 ./
 ./etc/
 ./etc/s6/
@@ -1486,9 +1486,9 @@
 + for target in '"${targets[@]}"'
 + '[' nobin == nobin ']'
 + overlaydstpath=/s6/overlay-builder/overlay-rootfs-nobin
-+ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ overlaytarpath=/s6/dist/s6-overlay-1.18.2-nobin.tar.gz
 + rm -rf /s6/overlay-builder/overlay-rootfs-nobin
-+ rm -f /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ rm -f /s6/dist/s6-overlay-1.18.2-nobin.tar.gz
 + mkdir -p /s6/overlay-builder/overlay-rootfs-nobin
 + mkdir -p /s6/dist
 + cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-nobin/
@@ -1508,7 +1508,7 @@
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/finish
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/run
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-svscan-log/run
-+ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.2-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
 ./
 ./etc/
 ./etc/s6/
@@ -1571,9 +1571,9 @@
 + for target in '"${targets[@]}"'
 + '[' nobin == nobin ']'
 + overlaydstpath=/s6/overlay-builder/overlay-rootfs-nobin
-+ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ overlaytarpath=/s6/dist/s6-overlay-1.18.2-nobin.tar.gz
 + rm -rf /s6/overlay-builder/overlay-rootfs-nobin
-+ rm -f /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ rm -f /s6/dist/s6-overlay-1.18.2-nobin.tar.gz
 + mkdir -p /s6/overlay-builder/overlay-rootfs-nobin
 + mkdir -p /s6/dist
 + cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-nobin/
@@ -1593,7 +1593,7 @@
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/finish
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/run
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-svscan-log/run
-+ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.2-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
 ./
 ./etc/
 ./etc/s6/
@@ -1656,9 +1656,9 @@
 + for target in '"${targets[@]}"'
 + '[' nobin == nobin ']'
 + overlaydstpath=/s6/overlay-builder/overlay-rootfs-nobin
-+ overlaytarpath=/s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ overlaytarpath=/s6/dist/s6-overlay-1.18.2-nobin.tar.gz
 + rm -rf /s6/overlay-builder/overlay-rootfs-nobin
-+ rm -f /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz
++ rm -f /s6/dist/s6-overlay-1.18.2-nobin.tar.gz
 + mkdir -p /s6/overlay-builder/overlay-rootfs-nobin
 + mkdir -p /s6/dist
 + cp -a /s6/overlay-builder/overlay-rootfs/. /s6/overlay-builder/overlay-rootfs-nobin/
@@ -1678,7 +1678,7 @@
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/crash /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/.s6-svscan/finish
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-fdholderd/run
 + chmod 0755 /s6/overlay-builder/overlay-rootfs-nobin/etc/s6/services/s6-svscan-log/run
-+ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.1.3-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
++ tar --owner=root --group=root -zcvf /s6/dist/s6-overlay-1.18.2-nobin.tar.gz -C /s6/overlay-builder/overlay-rootfs-nobin ./
 ./
 ./etc/
 ./etc/s6/
